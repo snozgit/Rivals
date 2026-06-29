@@ -307,9 +307,8 @@ startRageMode()
 local noRecoilConn
 local function setupNoRecoil()
     if noRecoilConn then noRecoilConn:Disconnect() end
-    noRecoilConn = RunService.RenderStepped:Connect(function()
+    noRecoilConn = RunService.Heartbeat:Connect(function()
         if not Aimbot.Config.NoRecoil_Enabled and not Aimbot.Config.Rage_NoRecoil then return end
-        -- Neutralise la déviation verticale caméra
         local camCF = Camera.CFrame
         local _, currentPitch, _ = camCF:ToEulerAnglesYXZ()
         if currentPitch > 0.01 then
