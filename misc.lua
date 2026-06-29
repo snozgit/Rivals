@@ -22,7 +22,7 @@ function Misc.LoadUnlockAll()
     -- Ton code unlock all intégré directement
     local ok, err = pcall(function()
         local UnlockScript = loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/TONPSEUDO/TONREPO/main/unlockall.lua", true
+            "https://raw.githubusercontent.com/snozgit/Rivals/main/unlockall.lua", true
         ))()
     end)
     if ok then
