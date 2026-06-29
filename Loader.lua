@@ -5,24 +5,30 @@
 task.spawn(function()
     local BASE = "https://raw.githubusercontent.com/snozgit/Rivals/main/"
     local function Load(m)
-        return loadstring(game:HttpGet(BASE .. m .. ".lua", true))()
+        local ok, result = pcall(function()
+            return loadstring(game:HttpGet(BASE .. m .. ".lua", true))()
+        end)
+        if not ok then warn("Erreur chargement " .. m .. ": " .. tostring(result)) end
+        return result
     end
 
     local UI = Load("ui")
     _G.RivalsUI = UI
-    task.wait(0.1)
+    task.wait(0.5)
 
-    local Aimbot = Load("aimbot")
-    task.wait(0.1)
+    local Aimbot, ESP_, World, Misc
 
-    local ESP_ = Load("esp")
-    task.wait(0.1)
+    task.spawn(function() Aimbot = Load("aimbot") end)
+    task.wait(0.5)
 
-    local World = Load("world")
-    task.wait(0.1)
+    task.spawn(function() ESP_ = Load("esp") end)
+    task.wait(0.5)
 
-    local Misc = Load("misc")
-    task.wait(0.1)
+    task.spawn(function() World = Load("world") end)
+    task.wait(0.5)
+
+    task.spawn(function() Misc = Load("misc") end)
+    task.wait(1)
 
     -- ====================================================
     -- ONGLET AIMBOT
