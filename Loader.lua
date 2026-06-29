@@ -3,7 +3,7 @@
 -- Exécute ce fichier dans Real
 -- ====================================================
 
-local BASE = "https://raw.githubusercontent.com/TONPSEUDO/TONREPO/main/"
+local BASE = "https://raw.githubusercontent.com/snozgit/Rivals/main/"
 local function Load(m)
     return loadstring(game:HttpGet(BASE .. m .. ".lua", true))()
 end
