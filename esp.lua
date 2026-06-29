@@ -228,7 +228,10 @@ fovDrawing.Thickness = 1
 fovDrawing.Visible = false
 
 -- ===== MAIN LOOP =====
-RunService.RenderStepped:Connect(function()
+RunService.Heartbeat:Connect(function()
+    if not ESP.Config.Enabled and not ESP_.Config.Crosshair and not ESP_.Config.FovCircle then
+        return
+    end
     -- Crosshair
     if ESP.Config.Crosshair then
         local cx = Camera.ViewportSize.X / 2
